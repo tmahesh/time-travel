@@ -29,7 +29,7 @@
         "scripting"
     ],
     "host_permissions": [
-        "<all_urls>",
-        "*://*.local.medable.com/*"
+        "https://*.local.medable.com/*",
+        "https://*.medabletestautomation.com/*"
     ]
 }
