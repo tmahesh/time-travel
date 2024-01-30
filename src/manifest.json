@@ -30,6 +30,7 @@
     ],
     "host_permissions": [
         "https://*.local.medable.com/*",
-        "https://*.medabletestautomation.com/*"
+        "https://*.medabletestautomation.com/*",
+        "https://*.somaspace.medable.tech/*"
     ]
 }

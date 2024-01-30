@@ -8,7 +8,23 @@ export function getFakeDate() {
 
 export function setFakeDate(date: string) {
     console.log("set fake date called");
-    fetch(`https://api.local.medable.com/settime/${date}`).then(r=>r.text()).then(r=>console.log(date, r))
+    const environment: string  = window.location.host.split('.')[0].split('-')[1]
+
+    console.log(`Updating the time in the environment ${environment} with ${date}`);
+    const updateUrl = `https://admin-${environment}.somaspace.medable.tech/updateTime`;
+    fetch(updateUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Medable-Client-Key': 'c_axon_demo_app',
+        },
+        body: JSON.stringify({
+            time: date
+        })
+    }).then(() => console.log(`Updated the time in the environment ${environment} with ${date}`))
+        .catch(e => console.error('Error updating time', e));
+
+    // fetch(`https://api.local.medable.com/settime/${date}`).then(r=>r.text()).then(r=>console.log(date, r))
   
     //needs to be defined locally!
     const FAKE_DATE_STORAGE_KEY = 'timeTravelDate'
